@@ -7,6 +7,7 @@ class Cart(models.Model):
     phone = models.CharField(max_length = 12, blank=True)
     email = models.EmailField(blank=True)
     website = models.URLField(blank=True)
+    yelp = models.URLField(blank=True)
     twitter = models.URLField(blank=True)
     instagram = models.URLField(blank=True)
     facebook = models.URLField(blank=True)
