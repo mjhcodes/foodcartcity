@@ -16,18 +16,41 @@
 		<script src="https://kit.fontawesome.com/02b8298c98.js"></script>
 		<!-- Custom CSS -->
 		<link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+		<!-- Favicon Image -->
+		<link rel="icon" href="{% static 'img/fcclogo.png' %}" /> 
 		<title>Food Cart City</title>
   </head>
 
   <body>
 
-		<div>
+		<div id="app">
 
 			<header>
 			</header>
 
-			<main>
-			</main>
+		<main>
+			<div class="container">
+				<div class="search-wrapper focused" style="margin-top: 30px">
+					<input id="search" placeholder="Search" v-model="searchValue" @keyup.enter="listCarts" />
+				</div>
+				<div class="row center-align" style="margin-top: 30px; height: 500px;">
+					<div class="col s12 m6 l4" v-for="r of restaurants">
+						<div class="card medium">
+							<div class="card-image center-align">
+								<img :src="r.restaurant.thumb" alt="food cart city logo" style="max-width: 100%">
+								<span class="card-title center-align" style="width: 100%">[[ r.restaurant.name ]]</span>
+							</div>
+							<div class="card-content center-align valign-wrapper">
+								<p>[[ r.restaurant.location.address ]]</p>
+							</div>
+							<div class="card-action center-align">
+								<a style="margin-right: 0;":href="r.restaurant.url">Website</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
 
 			<footer>
 			</footer>
