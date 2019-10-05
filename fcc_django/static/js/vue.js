@@ -1,4 +1,4 @@
-const mykey = config.ZOMATO_KEY;
+
 
 ///////////// VUE COMPONENTS //////////////
 
@@ -8,7 +8,7 @@ Vue.component('card', {
 		<div class="card medium">
 			<div class="card-image center-align">
 				<img :src="image" alt="food cart city logo" style="max-width: 100%">
-				<span class="card-title center-align" style="width: 100%">[[ name ]]</span>
+				<span class="card-title center-align" style="width: 100%">{{ name }}</span>
 			</div>
 			<div class="card-content center-align valign-wrapper">
 				<p>{{ address }}</p>
@@ -23,6 +23,8 @@ Vue.component('card', {
 
 
 ///////////// VUE ROOT //////////////
+
+const mykey = config.ZOMATO_KEY;
 
 new Vue({
   el: '#app',
