@@ -1,3 +1,27 @@
+const mykey = config.ZOMATO_KEY;
+
+///////////// VUE COMPONENTS //////////////
+
+Vue.component('card', {
+	props: ['image', 'name', 'address', 'website'],
+	template: `
+		<div class="card medium">
+			<div class="card-image center-align">
+				<img :src="image" alt="food cart city logo" style="max-width: 100%">
+				<span class="card-title center-align" style="width: 100%">[[ name ]]</span>
+			</div>
+			<div class="card-content center-align valign-wrapper">
+				<p>{{ address }}</p>
+			</div>
+			<div class="card-action center-align">
+				<a style="margin-right: 0;":href="website">Website</a>
+			</div>
+		</div>
+	`
+})
+
+
+
 ///////////// VUE ROOT //////////////
 
 new Vue({
@@ -16,7 +40,7 @@ new Vue({
 				baseURL: "https://developers.zomato.com/api/v2.1/",
 				url: "search",
 				headers: {
-					"user-key": "845100fc86ee9f8dacc60cda5d0c1d7b",
+					"user-key": mykey,
 				},
 				params: {
 					"entity_id": 286, // Portland's city ID

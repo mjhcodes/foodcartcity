@@ -29,27 +29,23 @@
 			</header>
 
 		<main>
-			<div class="container">
+
+			<div class="container"> <!-- START CONTAINER -->
+
+				<!-- START SEARCH BAR -->
 				<div class="search-wrapper focused" style="margin-top: 30px">
 					<input id="search" placeholder="Search" v-model="searchValue" @keyup.enter="listCarts" />
 				</div>
+				<!-- END SEARCH BAR -->
+
 				<div class="row center-align" style="margin-top: 30px; height: 500px;">
 					<div class="col s12 m6 l4" v-for="r of restaurants">
-						<div class="card medium">
-							<div class="card-image center-align">
-								<img :src="r.restaurant.thumb" alt="food cart city logo" style="max-width: 100%">
-								<span class="card-title center-align" style="width: 100%">[[ r.restaurant.name ]]</span>
-							</div>
-							<div class="card-content center-align valign-wrapper">
-								<p>[[ r.restaurant.location.address ]]</p>
-							</div>
-							<div class="card-action center-align">
-								<a style="margin-right: 0;":href="r.restaurant.url">Website</a>
-							</div>
-						</div>
+						<card image="{{ r.restaurant.thumb }}" name="r.restaurant.name" address="{{ r.restaurant.location.address }}" website="r.restaurant.url"></card>
 					</div>
 				</div>
-			</div>
+
+			</div> <!-- END CONTAINER -->
+
 		</main>
 
 			<footer>
@@ -62,10 +58,12 @@
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<!-- Vue -->
 		<script src="https://unpkg.com/vue"></script>
-		<!-- Personal Vue JavaScript -->
-		<script src="{% static 'js/vue.js' %}"></script>
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!-- Encrypted JS file  -->
+		<script src="{% static 'js/config.js' %}"></script>
+		<!-- Personal Vue JavaScript -->
+		<script src="{% static 'js/vue.js' %}"></script>
 
 	</body>
 
