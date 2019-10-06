@@ -33,14 +33,14 @@
 			<div class="container"> <!-- START CONTAINER -->
 
 				<!-- START SEARCH BAR -->
-				<div class="search-wrapper focused" style="margin-top: 30px">
+				<div class="search-wrapper focused">
 					<input id="search" placeholder="Search" v-model="searchValue" @keyup.enter="listCarts" />
 				</div>
 				<!-- END SEARCH BAR -->
 
-				<div class="row center-align" style="margin-top: 30px; height: 500px;">
+				<div class="row center-align">
 					<div class="col s12 m6 l4" v-for="r of restaurants">
-						<card :image="r.restaurant.thumb" :name="r.restaurant.name" :address="r.restaurant.location.address" :website="r.restaurant.desktop"></card>
+						<card :image="r.restaurant.thumb" :name="r.restaurant.name" :address="r.restaurant.location.address" :phone="r.restaurant.phone_numbers" :website="r.restaurant.url"></card>
 					</div>
 				</div>
 

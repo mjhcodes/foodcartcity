@@ -2,19 +2,25 @@
 
 ///////////// VUE COMPONENTS //////////////
 
-Vue.component('card', {
-	props: ['image', 'name', 'address', 'website'],
+Vue.component("card", {
+	props: ["image", "name", "address", "phone", "website"],
+	data: function() {
+		return {
+			tel: "tel:",
+		}
+	},
 	template: `
 		<div class="card medium">
 			<div class="card-image center-align">
-				<img :src="image" alt="food cart city logo" style="max-width: 100%">
-				<span class="card-title center-align" style="width: 100%">{{ name }}</span>
+				<img :src="image" alt="food cart city logo">
+				<span class="card-title center-align">{{ name }}</span>
 			</div>
 			<div class="card-content center-align valign-wrapper">
 				<p>{{ address }}</p>
 			</div>
 			<div class="card-action center-align">
-				<a style="margin-right: 0;":href="website">Website</a>
+				<a :href="tel + phone"><i class="material-icons">local_phone</i></a>
+				<a :href="website"><i class="material-icons">desktop_mac</i></a>
 			</div>
 		</div>
 	`
@@ -27,8 +33,8 @@ Vue.component('card', {
 const mykey = config.ZOMATO_KEY;
 
 new Vue({
-  el: '#app',
-  delimiters: ['[[', ']]'],
+  el: "#app",
+  delimiters: ["[[", "]]"],
 	data () {
 		return {
 			restaurants: null,
@@ -50,6 +56,7 @@ new Vue({
 					"q": this.searchValue,
 					"establishment_type": 81, // Food Cart ID
 					"count": 20,
+					"sort": "rating",
 				}
 			})
 			.then((response) => {
