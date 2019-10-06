@@ -37,38 +37,59 @@ new Vue({
   delimiters: ["[[", "]]"],
 	data () {
 		return {
-			restaurants: null,
 			searchValue: null,
+			cuisineFilter: null, // not yet a feature
+			page: 1,
+			perPage: 8,
+			carts: [],
+			cuisines: [],
 		}
 	},
-	methods: {
-		listCarts: function() {
-			axios({
-				method: "get",
-				baseURL: "https://developers.zomato.com/api/v2.1/",
-				url: "search",
-				headers: {
-					"user-key": mykey,
-				},
-				params: {
-					"entity_id": 286, // Portland's city ID
-					"entity_type": "city",
-					"q": this.searchValue,
-					"establishment_type": 81, // Food Cart ID
-					"count": 20,
-					"sort": "rating",
-				}
-			})
-			.then((response) => {
-				console.log(response.data.restaurants);
-				this.restaurants = response.data.restaurants;
-			})
-			.catch(function(error) {
-				console.log(error);
-			})
-		}
-	},
-	mounted() {
-		this.listCarts()
-	}
+  methods: {
+    listCarts: function () {
+      axios({
+        method: 'get',
+        baseURL: 'api/carts/',
+        params: {
+          search: this.searchValue,
+          page: this.page,
+        }
+      })
+      .then((response) => {
+        console.log(response.data.results);
+        this.carts = response.data.results;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+    },
+    listCuisines: function () {
+      axios({
+        method: 'get',
+        baseURL: 'api/cuisines/',
+      })
+      .then((response) => {
+        console.log(response.data.results);
+        this.cuisines = response.data.results;
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
+    },
+    prevPage: function () {
+      if (this.page > 1) {
+        this.page--;
+        this.listCarts();
+      }
+    },
+    nextPage: function () {
+      if (this.page <= (this.carts.length / this.perPage) + 1) 
+        this.page++;
+        this.listCarts();
+    },
+  },
+  mounted: function () {
+    this.listCarts();
+    this.listCuisines();
+  }
 })
