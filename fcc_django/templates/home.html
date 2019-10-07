@@ -15,9 +15,9 @@
 		<!-- Font Awesome -->
 		<script src="https://kit.fontawesome.com/02b8298c98.js"></script>
 		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+		<link rel="stylesheet" href="{% static "css/custom.css" %}" />
 		<!-- Favicon Image -->
-		<link rel="icon" href="{% static 'img/fcclogo.png' %}" /> 
+		<link rel="icon" href="{% static "img/fcclogo.png" %}" /> 
 		<title>Food Cart City</title>
   </head>
 
@@ -26,6 +26,7 @@
 		<div id="app">
 
 			<header>
+				<navbar></navbar>
 			</header>
 
 		<main>
@@ -39,9 +40,10 @@
 				<!-- END SEARCH BAR -->
 
 				<div class="row center-align">
-					<div class="col s12 m6 l4" v-for="cart of carts" :key="cart.id">
-						<card :image="cart.image" :name="cart.name" :address="cart.address" :phone="cart.phone" :website="cart.website"></card>
+					<div class="col s6 m4 xl3" v-for="cart of carts" :key="cart.id">
+						<card :cart="cart"></card>
 					</div>
+					<slideout></slideout>
 				</div>
 
 			</div> <!-- END CONTAINER -->
@@ -56,8 +58,9 @@
 
 		<!-- Axios -->
 		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<!-- Vue -->
+		<!-- Vue & Vuex -->
 		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/vuex"></script>
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 		<!-- Ignored JS file  -->
