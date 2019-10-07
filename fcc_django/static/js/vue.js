@@ -55,6 +55,7 @@ Vue.component("slideout", {
 	data: function() {
 		return {
       tel: "tel:",
+      mailto: "mailto:",
       googleMaps: "https://www.google.com/maps/place/",
 		}
   },
@@ -65,15 +66,29 @@ Vue.component("slideout", {
   },
   template: `
     <div id="slide-out" class="sidenav">
-      <div class="user-view" style="height: 285px">
+      <div class="user-view" style="margin: 0; height: 285px">
         <div class="background">
           <img :src="cart.image" style="width: 100%">
         </div>
       </div>
-      <h4>{{ cart.name }}</h4>
-      <div class="divider"></div>
-      <p><a :href="googleMaps + cart.address" target="_blank">{{ cart.address }}</a></p>
-      <div class="divider"></div>
+      <div style="height: 75px" class="valign-wrapper">
+        <h4 style="margin: 0; width: 100%" class="center-align">{{ cart.name }}</h4>
+      </div>
+      <div style="margin: 0" class="divider"></div>
+      <div style="height: 100px" class="valign-wrapper">
+        <a :href="googleMaps + cart.address" target="_blank" style="width: 100%">{{ cart.address }}</a>
+      </div>
+      <div style="margin: 0" class="divider"></div>
+      <div style="display: flex; justify-content: space-evenly; height: 50px;" class="valign-wrapper">
+        <a :href="tel + cart.phone" v-if="cart.phone"><i class="fas fa-phone-alt fa-lg"></i></a>
+        <a :href="cart.website" v-if="cart.website" target="_blank"><i class="fas fa-desktop fa-lg"></i></a>
+        <a :href="mailto + cart.email" v-if="cart.email"><i class="fas fa-paper-plane fa-lg"></i></a>
+        <a :href="cart.facebook" v-if="cart.facebook" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+        <a :href="cart.instagram" v-if="cart.instagram" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+        <a :href="cart.twitter" v-if="cart.twitter" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+        <a :href="cart.yelp" v-if="cart.yelp" target="_blank"><i class="fab fa-yelp fa-lg"></i></a>
+      </div>
+      <div style="margin: 0" class="divider"></div>
     </div>
   `
 })
