@@ -1,4 +1,4 @@
-///////////// VUE STORES //////////////
+///////////// VUE STORE //////////////
 
 const store = new Vuex.Store({
   state: {
@@ -14,6 +14,12 @@ const store = new Vuex.Store({
 ///////////// VUE COMPONENTS //////////////
 
 Vue.component("navbar", {
+  props: ["value"],
+  methods: {
+    updateValue: function (value) {
+      this.$emit("input", value);
+    }
+  },
   template: `
     <div>
       <nav>
@@ -21,6 +27,11 @@ Vue.component("navbar", {
           <a href="#!" class="brand-logo"><img src="../static/img/fcclogo.png" style="height: 50px"></a>
           <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
           <ul class="right hide-on-med-and-down">
+            <li>
+              <div class="search-wrapper focused">
+                <input id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
+              </div>
+            </li>
             <li><a href="#">SIGN IN</a></li>
             <li><a href="#">GET STARTED</a></li>
           </ul>
@@ -28,6 +39,11 @@ Vue.component("navbar", {
       </nav>
 
       <ul class="sidenav" id="mobile-demo">
+        <li>
+          <div class="search-wrapper focused">
+            <input id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
+          </div>
+        <li>
         <li><a href="#">SIGN IN</a></li>
         <li><a href="#">GET STARTED</a></li>
       </ul>
@@ -157,6 +173,11 @@ new Vue({
   mounted: function () {
     this.listCarts();
     this.listCuisines();
+  },
+  watch: {
+    searchValue: function () {
+      this.listCarts()
+    }
   }
 })
 

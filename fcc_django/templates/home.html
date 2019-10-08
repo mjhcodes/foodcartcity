@@ -26,18 +26,12 @@
 		<div id="app">
 
 			<header>
-				<navbar></navbar>
+				<navbar v-model="searchValue"></navbar>
 			</header>
 
 		<main>
 
 			<div class="container"> <!-- START CONTAINER -->
-
-				<!-- START SEARCH BAR -->
-				<div class="search-wrapper focused">
-					<input id="search" placeholder="Search" v-model="searchValue" @keyup.enter="listCarts" />
-				</div>
-				<!-- END SEARCH BAR -->
 
 				<div class="row center-align">
 					<div class="col s6 m4 xl3" v-for="cart of carts" :key="cart.id">
