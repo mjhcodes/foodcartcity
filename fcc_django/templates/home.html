@@ -21,7 +21,7 @@
 		<title>Food Cart City</title>
   </head>
 
-  <body>
+  <body class="grey lighten-3">
 
 		<div id="app">
 
@@ -33,9 +33,9 @@
 
 			<div class="container"> <!-- START CONTAINER -->
 
-				<ul class="pagination center-align" style="margin-top: 200px;">
+				<ul class="pagination center-align" style="margin-top: 50px;">
 					<li class="waves-effect" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-					<li class="waves-effect" v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber"><a href="#!">[[ pageNumber ]]</a></li>
+					<li class="waves-effect" v-for="pageNumber in pages.slice(page-1, page+2)" @click="page = pageNumber"><a href="#!">[[ pageNumber ]]</a></li>
 					<li class="waves-effect" @click="page++"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
 				</ul>
 

@@ -23,25 +23,26 @@ Vue.component("navbar", {
   template: `
     <div>
       <nav>
-        <div class="nav-wrapper light-green lighten-5">
+        <div class="nav-wrapper white">
           <a href="#!" class="brand-logo"><img src="../static/img/fcclogo.png" style="height: 50px"></a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons green-text">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li>
               <div class="search-wrapper focused">
-                <input id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
+                <input class="black-text" id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
               </div>
             </li>
-            <li><a href="#">SIGN IN</a></li>
-            <li><a href="#">GET STARTED</a></li>
+            <li style="margin-left: 25px;"><a href="#" class="green-text">SIGN IN</a></li>
+            <li style="margin-right: 25px;"><a href="#" class="green-text">GET STARTED</a></li>
           </ul>
         </div>
       </nav>
 
       <ul class="sidenav" id="mobile-demo">
+        <a href="#!" class="brand-logo"><img src="../static/img/fcclogo.png" style="width: 90%; margin-top: 20px; margin-bottom: 20px;"></a>
         <li>
-          <div class="search-wrapper focused">
-            <input id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
+          <div class="search-wrapper focused center-align">
+            <input style="width: 80%;" id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
           </div>
         <li>
         <li><a href="#">SIGN IN</a></li>
@@ -179,7 +180,8 @@ new Vue({
   },
   watch: {
     searchValue: function () {
-      this.listCarts()
+      this.page = 1;
+      this.listCarts();
     },
     carts () {
       this.setPages();
