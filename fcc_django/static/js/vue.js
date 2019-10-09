@@ -123,6 +123,7 @@ new Vue({
 			cuisineFilter: null, // not yet a feature
 			page: 1,
       perPage: 8,
+      pages: [],
 			carts: [],
       cuisines: [],
 		}
@@ -158,17 +159,19 @@ new Vue({
         console.log(error);
       })
     },
-    // prevPage: function () {
-    //   if (this.page > 1) {
-    //     this.page--;
-    //     this.listCarts();
-    //   }
-    // },
-    // nextPage: function () {
-    //   if (this.page <= (this.carts.length / this.perPage) + 1) 
-    //     this.page++;
-    //     this.listCarts();
-    // },
+    setPages () {
+      let numberOfPages = Math.ceil(this.carts.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate (carts) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = (page * perPage) - perPage;
+      let to = (page * perPage);
+      return carts.slice(from, to);
+    }
   },
   mounted: function () {
     this.listCarts();
@@ -177,6 +180,14 @@ new Vue({
   watch: {
     searchValue: function () {
       this.listCarts()
+    },
+    carts () {
+      this.setPages();
+    }
+  },
+  computed: {
+    displayedCarts () {
+      return this.paginate(this.carts);
     }
   }
 })

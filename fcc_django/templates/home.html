@@ -33,8 +33,14 @@
 
 			<div class="container"> <!-- START CONTAINER -->
 
+				<ul class="pagination center-align" style="margin-top: 200px;">
+					<li class="waves-effect" @click="page--"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+					<li class="waves-effect" v-for="pageNumber in pages.slice(page-1, page+5)" @click="page = pageNumber"><a href="#!">[[ pageNumber ]]</a></li>
+					<li class="waves-effect" @click="page++"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+				</ul>
+
 				<div class="row center-align">
-					<div class="col s6 m4 xl3" v-for="cart of carts" :key="cart.id">
+					<div class="col s6 m4 xl3" v-for="cart of displayedCarts" :key="cart.id">
 						<card :cart="cart"></card>
 					</div>
 					<slideout></slideout>
