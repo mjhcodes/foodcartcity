@@ -25,15 +25,15 @@ Vue.component("navbar", {
       <nav>
         <div class="nav-wrapper white">
           <a href="#!" class="brand-logo"><img src="../static/img/fcclogo.png" style="height: 50px"></a>
-          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons green-text">menu</i></a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons green-text text-darken-4">menu</i></a>
           <ul class="right hide-on-med-and-down">
             <li>
               <div class="search-wrapper focused">
                 <input class="black-text" id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
               </div>
             </li>
-            <li style="margin-left: 25px;"><a href="#" class="green-text">SIGN IN</a></li>
-            <li style="margin-right: 25px;"><a href="#" class="green-text">GET STARTED</a></li>
+            <li style="margin-left: 25px;"><a href="#" class="green-text text-darken-4">SIGN IN</a></li>
+            <li><a href="#" class="green darken-4 white-text">GET STARTED</a></li>
           </ul>
         </div>
       </nav>
@@ -61,8 +61,15 @@ Vue.component("card", {
   },
 	template: `
 		<div class="card hoverable">
-			<div class="card-image waves-effect waves-block waves-light">
-        <a href="#" data-target="slide-out" class="sidenav-trigger" @click="cartSideNav(cart)"><img :src="cart.image" alt="food cart city logo"></a>
+			<div class="card-image content waves-effect waves-block waves-light">
+        <a href="#" data-target="slide-out" class="sidenav-trigger" @click="cartSideNav(cart)">
+          <div class="content-overlay"></div>
+          <img class="content-image" :src="cart.image" alt="Image of a food cart">
+          <div class="content-details fadeIn-top">
+            <h3 class="flow-text">{{ cart.name }}</h3>
+            <p class="flow-text">{{ cart.neighborhood }}</p>
+          </div>
+        </a>
 			</div>
 		</div>
 	`
