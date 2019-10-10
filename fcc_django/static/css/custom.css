@@ -1,4 +1,4 @@
-/* CSS for showing basic cart into when hovering over card */
+/* CSS for showing basic cart info when hovering over card */
 
 .content {
   position: relative;
@@ -62,4 +62,13 @@
 
 .fadeIn-top {
   top: 20%;
+}
+
+/* changes hover color on toggle menu to light blue */
+.sidenav li a:hover {
+  background-color: rgba(148, 198, 242, 0.25);
+}
+
+.fab:hover, .fas:hover, .far:hover {
+  color: #4192D9 !important;
 }
