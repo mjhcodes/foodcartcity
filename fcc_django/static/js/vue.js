@@ -1,4 +1,4 @@
-///////////// VUE STORE //////////////
+///////////// VUEX STORE //////////////
 
 const store = new Vuex.Store({
   state: {
