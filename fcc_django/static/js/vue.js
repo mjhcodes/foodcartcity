@@ -121,6 +121,19 @@ Vue.component("slideout", {
   `
 })
 
+Vue.component("vuefooter", {
+  template: `
+    <div class="footer-copyright" style="padding: 22.5px 0">
+      <div class="container">
+      <span>© 2019 Food Cart City</span>
+      <a class="grey-text text-lighten-3 right" style="padding: 0 10px 0" href="mailto:foodcartcity@gmail.com"><i class="fas fa-paper-plane fa-lg"></i></a>
+      <a class="grey-text text-lighten-3 right" style="padding: 0 10px 0" href="https://www.twitter.com/foodcartcity" target="_blank"><i class="fab fa-twitter fa-lg"></i></a>
+      <a class="grey-text text-lighten-3 right" style="padding: 0 10px 0" href="https://www.instagram.com/foodcartcity" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+      <a class="grey-text text-lighten-3 right" style="padding: 0 10px 0" href="https://www.facebook.com/foodcartcity" target="_blank"><i class="fab fa-facebook fa-lg"></i></a>
+      </div>
+    </div>
+  `
+})
 
 ///////////// VUE ROOT //////////////
 
