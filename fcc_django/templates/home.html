@@ -1,74 +1,22 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
-  <head>
-		<!-- Required meta tags -->
-		<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<meta name="author" content="Matthew J. Hughes" />
-		<!-- Compiled and minified CSS -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-		<!-- Materialize Icons -->
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<!-- Font Awesome -->
-		<script src="https://kit.fontawesome.com/02b8298c98.js"></script>
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="{% static "css/custom.css" %}" />
-		<!-- Favicon Image -->
-		<link rel="icon" href="{% static "img/fcclogo.png" %}" /> 
-		<title>Food Cart City</title>
-  </head>
+  <div class="container"> <!-- START CONTAINER -->
 
-  <body class="grey lighten-2">
+    <ul class="pagination center-align" style="margin-top: 50px;">
+      <li @click="prevPage"><a href="#!"><i class="far fa-arrow-alt-circle-left"></i></a></li>
+      <li class="waves-effect" v-for="pageNumber in pages" @click="page = pageNumber"><a href="#!">[[ pageNumber ]]</a></li>
+      <li @click="nextPage"><a href="#!"><i class="far fa-arrow-alt-circle-right"></i></a></li>
+    </ul>
 
-		<div id="app"> <!-- START VUE APP -->
+    <div class="row center-align">
+      <div class="col s6 l4 xl3" v-for="cart of displayedCarts" :key="cart.id">
+        <card :cart="cart"></card> <!-- cart thumb gallery -->
+      </div>
+      <slideout></slideout> <!-- cart info sidenav -->
+    </div>
 
-			<header>
-				<navbar v-model="searchValue"></navbar>
-			</header>
+  </div> <!-- END CONTAINER -->
 
-			<main>
-
-				<div class="container"> <!-- START CONTAINER -->
-
-					<ul class="pagination center-align" style="margin-top: 50px;">
-						<li @click="prevPage"><a href="#!"><i class="far fa-arrow-alt-circle-left"></i></a></li>
-						<li class="waves-effect" v-for="pageNumber in pages" @click="page = pageNumber"><a href="#!">[[ pageNumber ]]</a></li>
-						<li @click="nextPage"><a href="#!"><i class="far fa-arrow-alt-circle-right"></i></a></li>
-					</ul>
-
-					<div class="row center-align">
-						<div class="col s6 l4 xl3" v-for="cart of displayedCarts" :key="cart.id">
-							<card :cart="cart"></card> <!-- cart thumb gallery -->
-						</div>
-						<slideout></slideout> <!-- cart info sidenav -->
-					</div>
-
-				</div> <!-- END CONTAINER -->
-
-			</main>
-
-			<footer style="margin-top: 80px; padding: 0;" class="page-footer green darken-4">
-				<vuefooter></vuefooter>
-			</footer>
-
-		</div> <!-- END VUE APP -->
-
-
-		<!-- Axios -->
-		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-		<!-- Vue & Vuex -->
-		<script src="https://unpkg.com/vue"></script>
-		<script src="https://unpkg.com/vuex"></script>
-		<!-- Compiled and minified JavaScript -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-		<!-- Ignored JS file  -->
-		<script src="{% static 'js/config.js' %}"></script>
-		<!-- Personal Vue JavaScript -->
-		<script src="{% static 'js/vue.js' %}"></script>
-
-	</body>
-
-</html>
+{% endblock %}

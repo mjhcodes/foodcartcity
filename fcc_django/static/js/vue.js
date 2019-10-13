@@ -32,8 +32,13 @@ Vue.component("navbar", {
                 <input class="black-text" id="search" placeholder="Search" v-bind:value="value" v-on:input="updateValue($event.target.value)" />
               </div>
             </li>
-            <li class="center-align" style="width: 140px; margin-left: 35px;"><a href="#" class="green-text text-darken-4" style="padding-left: 25px; padding-right: 25px;">SIGN IN</a></li>
-            <li style="width: 140px"><a href="#" class="green darken-4 white-text" style="padding-left: 20px; padding-right: 20px;">GET STARTED</a></li>
+            {% if user.is_authenticated %}
+            <li class="center-align" style="width: 140px; margin-left: 35px;"><a href="{% url 'logout' %}" class="green-text text-darken-4" style="padding-left: 25px; padding-right: 25px;">SIGN OUT</a></li>
+            <li style="width: 140px"><a href="#" class="green darken-4 white-text" style="padding-left: 20px; padding-right: 20px;">{{ user.username }}</a></li>
+            {% else %}
+            <li class="center-align" style="width: 140px; margin-left: 35px;"><a href="{% url 'login' %}" class="green-text text-darken-4" style="padding-left: 25px; padding-right: 25px;">SIGN IN</a></li>
+            <li style="width: 140px"><a href="{% url 'users:signup' %}" class="green darken-4 white-text" style="padding-left: 20px; padding-right: 20px;">GET STARTED</a></li>
+            {% endif %}
           </ul>
         </div>
       </nav>
@@ -183,6 +188,9 @@ new Vue({
       .catch(function(error) {
         console.log(error);
       })
+    },
+    updateValue: function (value) {
+      this.$emit("input", value);
     },
     setPages () {
       let numberOfPages = Math.ceil(this.carts.length / this.perPage);

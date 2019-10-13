@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h3 style="margin: 50px 0 25px;" class="green-text text-darken-4">Welcome to Food Cart City</h3>
+    <form action="" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button style="margin-top: 10px;" class="btn waves-effect waves-light green darken-4" type="submit" name="action" value="Sign Up">SIGN UP<i class="material-icons right">person_add</i></button>
+    </form>
+  </div>
+
+{% endblock %}

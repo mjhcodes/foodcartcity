@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="author" content="Matthew J. Hughes" />
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<!-- Materialize Icons -->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<!-- Font Awesome -->
+		<script src="https://kit.fontawesome.com/02b8298c98.js"></script>
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="{% static "css/custom.css" %}" />
+		<!-- Favicon Image -->
+		<link rel="icon" href="{% static "img/fcclogo.png" %}" /> 
+		<title>{% block title %}Food Cart City{% endblock %}</title>
+  </head>
+
+  <body class="grey lighten-2">
+
+		<div id="app"> <!-- START VUE APP -->
+		
+			<header>
+				{% comment %} <navbar v-model="searchValue" user="user"></navbar> {% endcomment %}
+				<div>
+					<nav>
+						<div class="nav-wrapper white">
+							<a href="{% url "carts:home" %}" class="brand-logo"><img src="{% static "img/fcclogo.png" %}" style="height: 50px;"></a>
+							<a href="#" data-target="mobile-demo" class="sidenav-trigger" style="margin-left: 8.5%;"><i class="material-icons green-text text-darken-4">menu</i></a>
+							<ul class="right hide-on-med-and-down">
+								<li>
+									<div class="search-wrapper focused">
+										<input class="black-text" id="search" placeholder="Search" v-model="searchValue" v-on:input="updateValue($event.target.value)" />
+									</div>
+								</li>
+								{% if user.is_authenticated %}
+								<li class="center-align" style="width: 140px; margin-left: 15px;"><a href="{% url "logout" %}" class="green-text text-darken-4" style="padding-left: 25px; padding-right: 25px;">SIGN OUT</a></li>
+								<li style="width: 140px"><a href="{% url "users:profile" user.username %}" class="center green darken-4 white-text" style="padding-left: 20px; padding-right: 20px;">{{ user.username }}</a></li>
+								{% else %}
+								<li class="center-align" style="width: 140px; margin-left: 15px;"><a href="{% url "login" %}" class="green-text text-darken-4" style="padding-left: 25px; padding-right: 25px;">SIGN IN</a></li>
+								<li style="width: 140px"><a href="{% url "users:signup" %}" class="green darken-4 white-text" style="padding-left: 20px; padding-right: 20px;">GET STARTED</a></li>
+								{% endif %}
+							</ul>
+						</div>
+					</nav>
+
+					<ul class="sidenav" id="mobile-demo">
+						<a href="{% url "carts:home" %}" class="brand-logo"><img src="{% static "img/fcclogo.png" %}" style="width: 90%; margin-top: 25px; margin-bottom: 25px;"></a>
+						<li>
+							<div class="search-wrapper focused center-align">
+								<input style="width: 80%;" id="search" placeholder="Search" v-model="searchValue" v-on:input="updateValue($event.target.value)" />
+							</div>
+						<li>
+						{% if user.is_authenticated %}
+						<li><a href="{% url "users:profile" user.username %}">Welcome, {{ user.username }}!</a></li>
+						<li><a href="{% url "logout" %}">SIGN OUT</a></li>
+						{% else %}
+						<li><a href="{% url "login" %}">SIGN IN</a></li>
+						<li><a href="{% url "users:signup" %}">GET STARTED</a></li>
+						{% endif %}
+					</ul>
+				</div>
+			</header>
+
+			<main>
+				
+				{% block content %}
+				{% endblock %}
+
+			</main>
+
+			<footer style="margin-top: 80px; padding: 0;" class="page-footer green darken-4">
+				<vuefooter></vuefooter>
+			</footer>
+
+		</div> <!-- END VUE APP -->
+
+
+		<!-- Axios -->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<!-- Vue & Vuex -->
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/vuex"></script>
+		<!-- Compiled and minified JavaScript -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<!-- Ignored JS file  -->
+		<script src="{% static "js/config.js" %}"></script>
+		<!-- Personal Vue JavaScript -->
+		<script src="{% static "js/vue.js" %}"></script>
+
+	</body>
+
+</html>

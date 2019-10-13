@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ object.first_name }} {{ object.last_name}}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h2>{{ object.first_name }} {{ object.last_name}}</h2>
+    <p><strong>Member Since:</strong> {{ object.date_joined }}</p>
+  </div>
+
+{% endblock %}
