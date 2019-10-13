@@ -5,8 +5,14 @@
 {% block content %}
 
   <div class="container">
-    <h2>{{ object.first_name }} {{ object.last_name}}</h2>
-    <p><strong>Member Since:</strong> {{ object.date_joined }}</p>
+    <div style="margin: 50px 0 35px;">
+      <h3 style="margin-bottom: 0px" class="green-text text-darken-4">{{ object.first_name }} {{ object.last_name}}</h3>
+      <p><strong>Member Since:</strong> {{ object.date_joined }}</p>
+    </div>
+    <hr />
+    <div style="margin-top: 25px;">
+      <h5>FAVORITE CARTS:</h5>
+    </div>
   </div>
 
 {% endblock %}
