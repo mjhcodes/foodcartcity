@@ -1,3 +1,13 @@
+/* Google Fonts */
+
+a, li, span, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+}
+
+p, .cart-address {
+  font-family: 'Montserrat', sans-serif;
+}
+
 /* Sticky Footer */ 
 
 #app {
@@ -76,11 +86,42 @@ main {
   top: 20%;
 }
 
-/* changes hover color on toggle menu to light blue */
+/* custom hover colors */
+
+.navbar-square:hover {
+  background-color: #4192D9 !important;
+}
+
 .sidenav li a:hover {
   background-color: rgba(148, 198, 242, 0.25);
 }
 
-.fab:hover, .fas:hover, .far:hover {
-  color: #4192D9 !important;
+.fab:hover, .fas:hover, .far:hover, .pagination-arrows:hover {
+  color: #067335 !important;
+}
+
+.btn:hover {
+  background-color: #4192D9 !important;
+}
+
+.fcc-socials:hover {
+  color: #F2EDA0 !important;
+}
+
+/* custom background colors */
+
+.cart-cuisine-background {
+  background-color: rgba(6, 115, 53, 0.25);
+}
+
+.cart-address-background {
+  background-color: rgba(242, 237, 160, 0.25);
+}
+
+.cart-socials-background {
+  background-color: rgba(148, 198, 242, 0.25);
+}
+
+.active {
+  background-color: #067335 !important;
 }
