@@ -15,8 +15,8 @@
 - Keep it sleek and efficient
 
 ## Current Features
-- Displays all of the food carts in the database with pagination
-- Clickability for additional information
+- Displays all of the food carts in the database with pagination option
+- Clickability for additional cart information, such as address, cuisine type, contact info and social links
 - Ability to search by name, cuisine or neighborhood
 - User registration system
 
