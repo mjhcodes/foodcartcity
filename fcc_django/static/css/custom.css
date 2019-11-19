@@ -125,3 +125,26 @@ main {
 .active {
   background-color: #067335 !important;
 }
+
+
+
+.brand-logo {
+  margin-top: 2.25px;
+}
+
+@media (min-width: 600px) {
+
+  .brand-logo {
+    margin-top: 6.5px
+  }
+
+}
+
+
+@media (min-width: 993px) {
+
+  .brand-logo {
+    margin-left: 4%;
+  }
+
+}

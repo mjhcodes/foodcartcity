@@ -98,7 +98,7 @@ Vue.component("vuefooter", {
 
 ///////////// VUE ROOT //////////////
 
-const mykey = config.ZOMATO_KEY;
+// const mykey = config.ZOMATO_KEY;
 
 new Vue({
   el: "#app",
